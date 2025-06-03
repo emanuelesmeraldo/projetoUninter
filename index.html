@@ -49,7 +49,7 @@
 
       <div id="Page2FormEstado" class="Form estado">
         <p id="Page2FormEstadoTitulo">Estado: </p>
-        <select id="Page2FormEstadoSelect"  class="UserInfo">
+        <select id="Page2FormEstadoSelect" class="UserInfo">
           <option value="">Selecione</option>
         </select>
       </div>
@@ -64,7 +64,7 @@
       <div id="Page2FormEscolaridade" class="Form escolaridade">
         <p id="Page2FormEscolaridadeTitulo">Escolaridade: </p>
 
-        <select id="Page2FormEscolaridadeSelect" name="escolaridade"  class="UserInfo">
+        <select id="Page2FormEscolaridadeSelect" name="escolaridade" class="UserInfo">
           <option value="">Selecione</option>
         </select>
       </div>
@@ -346,7 +346,7 @@
 
         <!--slide9 -->
         <div class="swiper-slide">
-    
+
           <button id="Page3BtnConcluir" onclick="sroll_lagem('#page4')">Concluir?</button>
 
         </div>
@@ -389,17 +389,6 @@
       width: 100%;
       height: 100vh;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -516,9 +505,9 @@
     }
 
     .Page3Img {
-     height: 300px;
-     
-      
+      height: 300px;
+
+
     }
   </style>
 
@@ -616,7 +605,7 @@
       option.value = iten
       option.textContent = iten
       selectEscolaridade.appendChild(option)
-    
+
     });
 
 
@@ -721,47 +710,84 @@
     })
 
 
-  ///PEGA VALORES DO FORMULARIO E DO QUIZ E Envia as respostas
+    ///PEGA VALORES DO FORMULARIO E DO QUIZ E Envia asrespostasQuest
 
-    let respostas = []
-    let ListResForm =[]
+    let qtdAcertos = 0
+
+    let ListResForm = []
 
     const BtnConcluir = document.getElementById('Page3BtnConcluir')
 
 
-  function salvaRespostas(){
+    function salvaRespostas() {
 
-    questoes.forEach((objeto, posi) => {
-      const res = document.querySelector(`input[name="Page3RadioRes${posi}"]:checked`)
-      if (objeto.resposta == res.value) {
-        //console.log("funcionoy")
-        respostas.push("acertou")
-      } else {
-        //console.log("nal",objeto.resposta, res.value)
-        respostas.push("errou")
+      questoes.forEach((objeto, posi) => {
+        const res = document.querySelector(`input[name="Page3RadioRes${posi}"]:checked`)
+        if (objeto.resposta == res.value) {
+          qtdAcertos++
+          
+        } else {
+
+          console.log(qtdAcertos)
+        }
+      })
+
+
+
+      /// verifica quais respostas estão certas
+      const ResFormulario = document.querySelectorAll('.UserInfo')
+
+      ResFormulario.forEach((obj, posi) => {
+
+        ListResForm.push(obj.value)
+
+
+      })
+
+
+      ///cria id unico
+      const data=new Date()
+      const id = data.getTime() + crypto.randomUUID()
+
+      /// envia através do sheety
+
+
+      let url = 'https://api.sheety.co/f37e71093d0656b45e354596544340fa/dadosPesquisa/dados';
+      let body = {
+        dado: {
+          "id": id,
+          "idade": ListResForm[0],
+          "estado": ListResForm[1],
+          "cidade": ListResForm[2],
+          "escolaridade": ListResForm[3],
+          "qtdAcertos": qtdAcertos,
+          "qtdErros": 10 - qtdAcertos
+
+        }
       }
-    })
-
-    
-
-    
-    const ResFormulario = document.querySelectorAll('.UserInfo')
-
-    ResFormulario.forEach((obj,posi)=>{
-      
-      ListResForm.push(obj.value)
-
-
-    })
-        console.log(respostas, ListResForm)
-  }
-
-  BtnConcluir.addEventListener('click',salvaRespostas)
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json' // O cabeçalho essencial!
+        },
+        body: JSON.stringify(body)
+      })
+        .then((response) => response.json())
+        .then(json => {
+          // Do something with object
+          console.log(json.dado);
+        });
 
 
+      console.log(ListResForm)
+    }
+
+    BtnConcluir.addEventListener('click', salvaRespostas)
 
 
- 
+
+
+
 
   </script>
 
