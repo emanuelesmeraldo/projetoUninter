@@ -26,7 +26,7 @@
   <!--bloco1-->
 
   <div id="page1" class="page">
-    <p id="Page1texto">Bem vindo ao questionario de matematica</p>
+    <p id="Page1texto">Bem vindo ao questionário de matematica</p>
     <button onclick="sroll_lagem('#page2')">Começar</button>
   </div>
 
@@ -640,69 +640,65 @@
     ///// codigo pagina 3
 
     //codigo das questões
-    const questoes = [{
+  const questoes = [{
       "linkImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Icosahedron.jpg/640px-Icosahedron.jpg",
-      "Pergunta": "é um icosaedro ?",
+      "Pergunta": "É um icosaedro?", 
       "resposta": "verdadeiro"
     },
 
     {
       "linkImg": "https://static.mundoeducacao.uol.com.br/mundoeducacao/2023/09/formato-de-uma-equacao-do-1-grau-com-uma-incognita.jpg",
-      "Pergunta": "Essa equação é verdadeira",
-      "resposta": "falso"
+      "Pergunta": "Essa equação está correta?", 
     },
 
     {
       "linkImg": "https://s1.static.brasilescola.uol.com.br/img/2016/04/encontrando-raizes-pela-formula-de-bhaskara.jpg",
-      "Pergunta": "Essa é a formula de baskara",
+      "Pergunta": "Essa é a fórmula de Bhaskara?",
       "resposta": "falso"
     },
 
     {
       "linkImg": "https://static.escolakids.uol.com.br/2020/03/triangulo-retangulo-2.jpg",
-      "Pergunta": "O valor dos angulos internos é 170°",
+      "Pergunta": "O valor dos ângulos internos é 170°?", 
       "resposta": "falso"
     },
 
-
-
     {
       "linkImg": "https://www.learningresources.com/media/wp-content/uploads/2019/03/Screen-Shot-2019-02-20-at-3.24.40-PM.png",
-      "Pergunta": "O número PI (π) é um número racional, ou seja, pode ser escrito como uma fração exata",
+      "Pergunta": "O número PI (π) é um número racional, ou seja, pode ser escrito como uma fração exata?", 
       "resposta": "falso"
     },
 
     {
       "linkImg": "https://www.oreilly.com/api/v2/epubs/9781780670034/files/images/image_6.jpg",
-      "Pergunta": "Qualquer número multiplicado por zero é igual a zero",
+      "Pergunta": "Qualquer número multiplicado por zero é igual a zero?", 
       "resposta": "verdadeiro"
     },
     {
       "linkImg": "https://www.researchgate.net/profile/Clovis-Guerim-Vieira/publication/303412458/figure/fig2/AS:364838720163841@1463995737179/Figura-2-A-menor-distancia-entre-dois-pontos.png",
-      "Pergunta": "A menor distância entre dois pontos é uma linha curva",
+      "Pergunta": "A menor distância entre dois pontos é uma linha curva?", 
       "resposta": "falso"
     },
 
     {
       "linkImg": "https://clubes.obmep.org.br/blog/wp-content/uploads/2018/02/prob108_2.png",
-      "Pergunta": "Um quadrado é um retângulo",
+      "Pergunta": "Um quadrado é um retângulo?", 
       "resposta": "verdadeiro"
     },
 
     {
       "linkImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOK6EAFWaOnJ_Chc0BXGxDg3wCC9Tb498AjA&s",
-      "Pergunta": "A raiz de 25 é somente -5",
+      "Pergunta": "A raiz de 25 é somente -5?", 
       "resposta": "falso"
     },
 
     {
       "linkImg": "https://images.educamaisbrasil.com.br/content/banco_de_imagens/guia-de-estudo/D/plano-cartesiano-2-.jpg",
-      "Pergunta": "Em um sistema de coordenadas cartesianas, o eixo horizontal é o eixo X",
+      "Pergunta": "Em um sistema de coordenadas cartesianas, o eixo horizontal é o eixo X?", 
       "resposta": "verdadeiro"
     },
+]
 
-
-    ]
 
 
 
@@ -765,7 +761,7 @@
       /// envia através do sheety
 
 
-      let url = ''//'https://api.sheety.co/f37e71093d0656b45e354596544340fa/dadosPesquisa/dados';
+      let url = 'https://api.sheety.co/f37e71093d0656b45e354596544340fa/dadosPesquisa/dados';
       let body = {
         dado: {
           "id": id,
